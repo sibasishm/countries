@@ -1,21 +1,18 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
-const Index = () => (
+const Home = () => (
 	<div>
 		<Head>
-			<title>Homepage | Siabsish Mohanty</title>
-			<link rel='icon' href='/favicon.ico' />
+			<title>Home</title>
+			<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
 		</Head>
-		<nav className='flex items-center justify-between py-4 px-8 border-b-2 border-gray-300'>
-			<div className='w-32'>
-				<a href='https://meetup.com' target='_blank'>
-					<img
-						src='https://www.meetup.com/mu_static/en-US/logo--script.004ada05.svg'
-						height={46}
-						alt='Meetup Logo'
-					/>
+		<nav className='flex items-center justify-between py-4 px-8 border-b-2 border-gray-300 bg-white'>
+			<Link href='/'>
+				<a className='font-bold tracking-wide text-2xl'>
+					Where in the world?
 				</a>
-			</div>
+			</Link>
 			<div className='flex'>
 				<div className='text-blue-600 font-bold text-center'>
 					<span>Start a new group</span>
@@ -35,4 +32,4 @@ const Index = () => (
 	</div>
 );
 
-export default Index;
+export default Home;
