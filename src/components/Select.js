@@ -4,7 +4,7 @@ const Select = () => {
 			<select
 				name='region'
 				id='region'
-				className='block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-6 py-3 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline'
+				className='block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-6 py-3 pr-6 rounded shadow leading-tight focus:outline-none focus:shadow-outline'
 			>
 				<option value='africa'>Africa</option>
 				<option value='asia'>Asia</option>
