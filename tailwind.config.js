@@ -1,8 +1,15 @@
 module.exports = {
-  purge: [],
-  theme: {
-    extend: {},
-  },
-  variants: {},
-  plugins: [],
-}
+	purge: [],
+	theme: {
+		extend: {
+			spacing: {
+				'3/5': '60%',
+			},
+		},
+		fontFamily: {
+			body: ['Quicksand', 'Arial', 'sans-serif'],
+		},
+	},
+	variants: {},
+	plugins: [],
+};
