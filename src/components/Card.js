@@ -9,14 +9,12 @@ const Card = ({ flag, name, params }) => {
 				/>
 			</div>
 			<div className='bg-white p-4 h-full'>
-				<h2 className='mt-2 text-xl font-bold leading-tight'>{name}</h2>
+				<h2 className='mt-2 text-2xl font-bold'>{name}</h2>
 				<ul className='mt-2 text-sm'>
 					{Object.keys(params).map((key) => (
 						<li key={key} className='capitalize my-1'>
 							<span className='font-semibold'>{key}: </span>
-							<span>
-								{params[key].toLocaleString('en-IN') || 'NA'}
-							</span>
+							<span>{params[key].toLocaleString() || 'NA'}</span>
 						</li>
 					))}
 				</ul>
