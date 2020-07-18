@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
 import Navbar from '../components/Navbar';
 import Searchbox from '../components/Searchbox';
@@ -13,7 +14,6 @@ export async function getServerSideProps() {
 }
 
 const Home = ({ data = [] }) => {
-	console.log(data);
 	return (
 		<>
 			<Head>
@@ -36,12 +36,19 @@ const Home = ({ data = [] }) => {
 							region,
 							capital,
 						}) => (
-							<Card
+							<Link
 								key={alpha3Code}
-								flag={flag}
-								name={name}
-								params={{ population, region, capital }}
-							/>
+								href='/[country]'
+								as={`/${name}`}
+							>
+								<a className='focus:outline-none focus:shadow-outline rounded'>
+									<Card
+										flag={flag}
+										name={name}
+										params={{ population, region, capital }}
+									/>
+								</a>
+							</Link>
 						)
 					)}
 				</main>
