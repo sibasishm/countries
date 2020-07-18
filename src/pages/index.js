@@ -36,7 +36,11 @@ const Home = ({ data = [] }) => {
 							region,
 							capital,
 						}) => (
-							<Link key={alpha3Code} href='/[country]' as={name}>
+							<Link
+								key={alpha3Code}
+								href='/[country]'
+								as={`/${name}`}
+							>
 								<a className='focus:outline-none focus:shadow-outline rounded'>
 									<Card
 										flag={flag}
