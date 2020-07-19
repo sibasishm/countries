@@ -23,9 +23,8 @@ export async function getServerSideProps({ query }) {
 
 const Home = ({ data }) => {
 	const { query } = useRouter();
-	console.log(data);
 
-	if (data.length === 0) {
+	if (!data || data.status === 404) {
 		return (
 			<Layout title={countryCodes[query.country]}>
 				<section className='p-4 md:p-8 lg:px-16 transition-colors ease-in-out delay-200'>
@@ -40,8 +39,8 @@ const Home = ({ data }) => {
 						</a>
 					</Link>
 				</section>
-				<main className='mt-10'>
-					<h2 className='mt-2 text-4xl font-bold'>{`${name} (${nativeName})`}</h2>
+				<main className='mt-10 text-center'>
+					<h2 className='mt-2 text-4xl font-bold'>Not Found!</h2>
 				</main>
 			</Layout>
 		);
@@ -61,7 +60,7 @@ const Home = ({ data }) => {
 		region,
 		subregion,
 		timezones,
-	} = data[0];
+	} = data;
 
 	const paramSet1 = {
 		capital,

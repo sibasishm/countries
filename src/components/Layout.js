@@ -2,13 +2,18 @@ import Head from 'next/head';
 
 import Navbar from './Navbar';
 
-let defaultTheme = 'theme-light';
+const DEFAULT_THEME = 'theme-light';
 
 const Layout = ({ children, title }) => {
-	if (process.browser) {
-		defaultTheme = window.localStorage.getItem('theme') || 'theme-light';
-	}
-	const [theme, setTheme] = React.useState(defaultTheme);
+	if (typeof window === 'undefined') return null;
+
+	const [theme, setTheme] = React.useState(
+		window.localStorage.getItem('theme') || DEFAULT_THEME
+	);
+
+	React.useEffect(() => {
+		setTheme(localStorage.getItem('theme'));
+	}, []);
 
 	React.useEffect(() => {
 		window.localStorage.setItem('theme', theme);
