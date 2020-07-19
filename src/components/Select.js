@@ -4,7 +4,7 @@ const Select = () => {
 			<select
 				name='region'
 				id='region'
-				className='block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-6 py-3 pr-6 rounded shadow leading-tight focus:outline-none focus:shadow-outline'
+				className='block appearance-none w-full bg-secondary border border-secondary hover:border-ternary px-6 py-3 pr-6 rounded shadow leading-tight focus:outline-none focus:shadow-outline'
 			>
 				<option value='africa'>Africa</option>
 				<option value='asia'>Asia</option>
@@ -12,7 +12,7 @@ const Select = () => {
 				<option value='europe'>Europe</option>
 				<option value='ocenia'>Ocenia</option>
 			</select>
-			<div className='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700'>
+			<div className='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-quaternary'>
 				<svg
 					className='fill-current h-4 w-4'
 					xmlns='http://www.w3.org/2000/svg'

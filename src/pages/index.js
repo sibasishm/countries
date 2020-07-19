@@ -1,7 +1,6 @@
-import Head from 'next/head';
 import Link from 'next/link';
 
-import Navbar from '../components/Navbar';
+import Layout from '../components/Layout';
 import Searchbox from '../components/Searchbox';
 import Select from '../components/Select';
 import Card from '../components/Card';
@@ -15,13 +14,8 @@ export async function getServerSideProps() {
 
 const Home = ({ data = [] }) => {
 	return (
-		<>
-			<Head>
-				<title>Home</title>
-				<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-			</Head>
-			<Navbar />
-			<section className='p-4 md:p-8 lg:px-16'>
+		<Layout>
+			<section className='p-4 md:p-8 lg:px-16 transition-colors ease-in-out delay-200'>
 				<div className='flex justify-between'>
 					<Searchbox />
 					<Select />
@@ -39,7 +33,7 @@ const Home = ({ data = [] }) => {
 							<Link
 								key={alpha3Code}
 								href='/[country]'
-								as={`/${name}`}
+								as={`/${alpha3Code}`}
 							>
 								<a className='focus:outline-none focus:shadow-outline rounded'>
 									<Card
@@ -53,7 +47,7 @@ const Home = ({ data = [] }) => {
 					)}
 				</main>
 			</section>
-		</>
+		</Layout>
 	);
 };
 
