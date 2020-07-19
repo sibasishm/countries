@@ -1,8 +1,7 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import Navbar from '../components/Navbar';
+import Layout from '../components/Layout';
 import countryCodes from '../../data/countryCodes';
 
 const capitalizeWord = (str) =>
@@ -15,7 +14,7 @@ const arrayToString = (arr) => arr.map(({ name }) => name).join(', ');
 
 export async function getServerSideProps({ query }) {
 	const res = await fetch(
-		`https://restcountries.eu/rest/v2/name/${query.country}?fullText=true`
+		`https://restcountries.eu/rest/v2/alpha/${query.country}`
 	);
 	const data = await res.json();
 
@@ -24,6 +23,30 @@ export async function getServerSideProps({ query }) {
 
 const Home = ({ data }) => {
 	const { query } = useRouter();
+	console.log(data);
+
+	if (data.length === 0) {
+		return (
+			<Layout title={countryCodes[query.country]}>
+				<section className='p-4 md:p-8 lg:px-16 transition-colors ease-in-out delay-200'>
+					<Link href='/'>
+						<a className='w-32 flex items-center justify-center shadow rounded bg-secondary p-2'>
+							<img
+								className='h-4 inline-block mr-4'
+								src='/arrow-back-outline.svg'
+								alt='back'
+							/>
+							<span>Back</span>
+						</a>
+					</Link>
+				</section>
+				<main className='mt-10'>
+					<h2 className='mt-2 text-4xl font-bold'>{`${name} (${nativeName})`}</h2>
+				</main>
+			</Layout>
+		);
+	}
+
 	const {
 		flag,
 		name,
@@ -58,15 +81,10 @@ const Home = ({ data }) => {
 	};
 
 	return (
-		<>
-			<Head>
-				<title>{query.country}</title>
-				<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-			</Head>
-			<Navbar />
-			<section className='p-4 md:p-8 lg:px-16'>
+		<Layout title={countryCodes[query.country]}>
+			<section className='p-4 md:p-8 lg:px-16 transition-colors ease-in-out delay-200'>
 				<Link href='/'>
-					<a className='w-32 flex items-center justify-center shadow rounded bg-white p-2'>
+					<a className='w-32 flex items-center justify-center shadow rounded bg-secondary p-2'>
 						<img
 							className='h-4 inline-block mr-4'
 							src='/arrow-back-outline.svg'
@@ -79,7 +97,7 @@ const Home = ({ data }) => {
 					<div className='lg:w-2/5 lg:pr-6'>
 						<img src={flag} alt={`${name} flag`} />
 					</div>
-					<div className='mt-6 lg:m-0 lg:w-3/5 px-16'>
+					<div className='mt-6 lg:m-0 lg:w-3/5 px-16 tracking-wide'>
 						<h2 className='mt-2 text-4xl font-bold'>{`${name} (${nativeName})`}</h2>
 						<div className='flex flex-col md:flex-row mt-4 justify-between'>
 							<ul className='md:mr-4'>
@@ -126,7 +144,7 @@ const Home = ({ data }) => {
 									as={`/${countryCodes[item]}`}
 								>
 									<a>
-										<li className='m-1 mx-3 shadow rounded bg-white p-2 px-4'>
+										<li className='m-1 mx-3 shadow rounded bg-secondary p-2 px-4'>
 											{countryCodes[item]}
 										</li>
 									</a>
@@ -136,7 +154,7 @@ const Home = ({ data }) => {
 					</div>
 				</main>
 			</section>
-		</>
+		</Layout>
 	);
 };
 
