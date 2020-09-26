@@ -1,13 +1,9 @@
-import Link from 'next/link';
-
 const Navbar = ({ theme, handleThemeChange }) => {
 	return (
 		<nav className='flex items-center justify-between p-4 md:px-8 lg:px-16 border-b-2 border-ternary bg-secondary'>
-			<Link href='/'>
-				<a className='font-bold tracking-wide md:text-2xl'>
-					Where in the world?
-				</a>
-			</Link>
+			<h1 className='font-bold tracking-wide md:text-2xl'>
+				Where in the world?
+			</h1>
 			<button
 				className='flex items-center p-2 hover:shadow focus:outline-none focus:shadow-outline rounded'
 				onClick={() =>
