@@ -1,16 +1,20 @@
-const Select = () => {
+const Select = ({ value, onChange }) => {
 	return (
 		<div className='inline-block relative w-40'>
 			<select
 				name='region'
 				id='region'
 				className='block appearance-none w-full bg-secondary border border-secondary hover:border-ternary px-6 py-3 pr-6 rounded shadow leading-tight focus:outline-none focus:shadow-outline'
+				value={value}
+				onChange={onChange}
 			>
-				<option value='africa'>Africa</option>
-				<option value='asia'>Asia</option>
-				<option value='america'>America</option>
-				<option value='europe'>Europe</option>
-				<option value='ocenia'>Ocenia</option>
+				<option value='all'>All Region</option>
+				<option value='Africa'>Africa</option>
+				<option value='Asia'>Asia</option>
+				<option value='Americas'>Americas</option>
+				<option value='Europe'>Europe</option>
+				<option value='Oceania'>Oceania</option>
+				<option value=''>NA</option>
 			</select>
 			<div className='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-quaternary'>
 				<svg

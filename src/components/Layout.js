@@ -12,14 +12,10 @@ const Layout = ({ children, title }) => {
 	);
 
 	React.useEffect(() => {
-		setTheme(localStorage.getItem('theme'));
-	}, []);
-
-	React.useEffect(() => {
 		window.localStorage.setItem('theme', theme);
 	}, [theme]);
 
-	const handleThemeChange = (newTheme) => {
+	const handleThemeChange = newTheme => {
 		setTheme(newTheme);
 	};
 
