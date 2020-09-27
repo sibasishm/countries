@@ -15,18 +15,26 @@ export async function getServerSideProps() {
 
 const Home = ({ data = [] }) => {
 	const [serachTerm, setSearchTerm] = useState('');
-	const [region, setRegion] = useState('');
+	const [region, setRegion] = useState('all');
 	const [filteredData, setFilteredData] = useState(data);
 
 	const handleSearchTermChange = e =>
 		setSearchTerm(e.target.value.toLowerCase());
-	const handleRegionChange = val => setRegion(val);
+	const handleRegionChange = e => setRegion(e.target.value);
 
 	useEffect(() => {
 		setFilteredData(
 			data.filter(({ name }) => name.toLowerCase().includes(serachTerm))
 		);
 	}, [serachTerm]);
+
+	useEffect(() => {
+		if (region !== 'all') {
+			setFilteredData(data.filter(country => country.region === region));
+		} else {
+			setFilteredData(data);
+		}
+	}, [region]);
 
 	return (
 		<Layout>

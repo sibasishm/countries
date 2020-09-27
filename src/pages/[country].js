@@ -146,11 +146,11 @@ const Home = ({ data }) => {
 							</ul>
 						</div>
 						<span className='font-semibold'>Border Countries: </span>
-						<ul className='flex flex-wrap'>
+						<ul className='flex flex-wrap space-x-3'>
 							{borders.length === 0
 								? 'None'
 								: borders.map(item => (
-										<li key={item} className='m-3'>
+										<li key={item} className='my-3'>
 											<Link href='/[country]' as={`/${countryCodes[item]}`}>
 												<a className='shadow rounded bg-secondary p-2 px-4 focus:outline-none focus:shadow-outline'>
 													{countryCodes[item]}
