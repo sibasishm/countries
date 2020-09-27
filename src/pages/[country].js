@@ -72,7 +72,6 @@ const Home = ({ data }) => {
 	} = data;
 
 	const paramSet1 = {
-		capital,
 		region,
 		subregion,
 		currencies,
@@ -82,9 +81,9 @@ const Home = ({ data }) => {
 	const arrayParams = ['currencies', 'languages'];
 
 	const paramSet2 = {
+		capital,
 		population,
 		area,
-		timezones,
 		callingCodes,
 	};
 
@@ -137,24 +136,28 @@ const Home = ({ data }) => {
 										<span className='font-semibold'>{`${capitalizeWord(
 											param
 										)}: `}</span>
-										<span>{paramSet2[param].toLocaleString() || 'NA'}</span>
+										<span>
+											{paramSet2[param]
+												? paramSet2[param].toLocaleString()
+												: 'NA'}
+										</span>
 									</li>
 								))}
 							</ul>
 						</div>
-						<ul className='flex items-center flex-wrap mt-4'>
-							<li className='font-semibold'>Border Countries: </li>
-							{borders.map(item => (
-								<Link
-									key={item}
-									href='/[country]'
-									as={`/${countryCodes[item]}`}
-								>
-									<a className='m-1 mx-3 shadow rounded bg-secondary p-2 px-4 focus:outline-none focus:shadow-outline'>
-										{countryCodes[item]}
-									</a>
-								</Link>
-							))}
+						<span className='font-semibold'>Border Countries: </span>
+						<ul className='flex flex-wrap'>
+							{borders.length === 0
+								? 'None'
+								: borders.map(item => (
+										<li key={item} className='m-3'>
+											<Link href='/[country]' as={`/${countryCodes[item]}`}>
+												<a className='shadow rounded bg-secondary p-2 px-4 focus:outline-none focus:shadow-outline'>
+													{countryCodes[item]}
+												</a>
+											</Link>
+										</li>
+								  ))}
 						</ul>
 					</div>
 				</main>
